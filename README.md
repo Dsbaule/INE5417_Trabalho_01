@@ -32,6 +32,6 @@ O objetivo desta aplicação é facilitar a edição e formatação de múltiplo
 
 ## Glossário
 
-Fonte - é um termo usado para informa o design da letra.
-Linguagem Java - É uma linguagem de programação orientada a objeto.
-Desktop - é o computador local (exemplo: notebook, micro-computador)
+- Fonte - é um termo usado para informa o design da letra.
+- Linguagem Java - É uma linguagem de programação orientada a objeto.
+- Desktop - é o computador local (exemplo: notebook, micro-computador).
