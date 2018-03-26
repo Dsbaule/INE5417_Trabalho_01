@@ -105,8 +105,8 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private void BotaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoNovoActionPerformed
         int returnVal = JanelaEscolhePasta.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            JOptionPane.showInputDialog("Nome do arquivo:");
-            documento = new Documento(JanelaEscolhePasta.getSelectedFile());
+            String NomeArquivo = JOptionPane.showInputDialog("Nome do arquivo:");
+            documento = new Documento(JanelaEscolhePasta.getSelectedFile(), NomeArquivo);
             jTextArea1.setText(documento.getTexto());
             jTextArea1.setVisible(true);
         } else {
