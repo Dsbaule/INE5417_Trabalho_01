@@ -24,6 +24,14 @@ public class Documento {
         this.arquivo = new File(arquivo);
         lerArquivo();
     }
+    
+    public Documento(File pasta, String nome) {
+        if(!nome.endsWith(".txt"))
+            nome = nome.concat(".txt");
+        System.out.println(nome);
+        this.arquivo = new File(pasta, nome);
+        lerArquivo();
+    }
 
     private void lerArquivo() {
         FileInputStream fis = null;
