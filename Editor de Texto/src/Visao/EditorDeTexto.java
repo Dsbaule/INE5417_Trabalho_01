@@ -5,7 +5,7 @@
  * Projeto:     Edito de Texto
 -------------------------------------------------------------------------------- */
 
-package Aplicação;
+package Visao;
 
 import Dados.Documento;
 import java.io.File;
