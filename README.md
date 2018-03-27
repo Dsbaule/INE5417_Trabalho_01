@@ -10,11 +10,11 @@ O objetivo desta aplicação é facilitar a edição e formatação de múltiplo
 
 ## Requisitos Funcionais
 
-- [ ] Requisito Funcional 1 - Novo
-- [ ] Requisito Funcional 2 - Editar
-- [ ] Requisito Funcional 3 - Salvar
+- [x] Requisito Funcional 1 - Novo
+- [x] Requisito Funcional 2 - Editar
+- [x] Requisito Funcional 3 - Salvar
 - [ ] Requisito Funcional 4 - Salvar como
-- [ ] Requisito Funcional 5 - Abrir
+- [x] Requisito Funcional 5 - Abrir
 - [ ] Requisito Funcional 6 - Fonte
 - [ ] Requisito Funcional 7 - Cor
 - [ ] Requisito Funcional 8 - Tamanho
@@ -23,8 +23,8 @@ O objetivo desta aplicação é facilitar a edição e formatação de múltiplo
 
 ## Requisitos Não-funcionais
 
-- [ ] Requisito Não-Funcional 1 - Linguagem Java
-- [ ] Requisito Não-Funcional 2 - Desktop
+- [x] Requisito Não-Funcional 1 - Linguagem Java
+- [x] Requisito Não-Funcional 2 - Desktop
 
 ## Regras de Domínio
 
