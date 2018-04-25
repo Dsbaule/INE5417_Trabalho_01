@@ -30,6 +30,7 @@ public class TelaAjuda extends javax.swing.JFrame {
         labelAjuda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ajuda");
 
         labelAjuda.setText("<html>"
             + "Atalhos <br/>" +
