@@ -56,7 +56,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             jTextArea1.setColumns(20);
-            jTextArea1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+            jTextArea1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
             jTextArea1.setLineWrap(true);
             jTextArea1.setRows(5);
             jTextArea1.setTabSize(4);

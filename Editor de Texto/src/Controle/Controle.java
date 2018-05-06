@@ -13,10 +13,8 @@ import Visao.EditorDeTexto;
 public class Controle {
     
     public static void main (String[] Args) {
-        
         EditorDeTexto editor = new EditorDeTexto();
         editor.setVisible(true);
-        
     }
     
 }

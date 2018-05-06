@@ -16,8 +16,9 @@ import java.util.logging.Logger;
 //! Classe para implementação de um documento
 public class Documento {
     
-    private File arquivo;   // Caminho para o arquivo representado
-    private String texto;   // Texto do documento
+    private File arquivo;           // Caminho para o arquivo representado
+    private String texto;           // Texto do Documento
+    private Formatacao formatacao;  // Formatação do Documento
     
     //! Construtor que recebe o caminho para o arquivo (Como File)
     public Documento(File arquivo) {
@@ -72,9 +73,19 @@ public class Documento {
     public String getTexto() {
         return this.texto;
     }
+
+    //! Retorna a formatação do documento
+    public Formatacao getFormatacao() {
+        return formatacao;
+    }
     
     //! Altera o texto do documento
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    //! Altera a formatação do documento
+    public void setFormatacao(Formatacao formatacao) {
+        this.formatacao = formatacao;
     }
 }
