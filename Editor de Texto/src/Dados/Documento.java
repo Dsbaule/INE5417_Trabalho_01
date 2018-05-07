@@ -12,61 +12,40 @@ package Dados;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.*;
+
+//! Mapeamento SQL
+@Entity
+@Table (name="DOCUMENTO")
 
 //! Classe para implementação de um documento
 public class Documento {
-    
-    private File arquivo;           // Caminho para o arquivo representado
+
+    private String nomeDocumento;   // Nome do Documento
+    private Usuario usuario;        // Usuario do Documento
     private String texto;           // Texto do Documento
     private Formatacao formatacao;  // Formatação do Documento
     
-    //! Construtor que recebe o caminho para o arquivo (Como File)
-    public Documento(File arquivo) {
-        this.arquivo = arquivo;
-        lerArquivo();
+    //! Construtor para novo arquivo;
+    public Documento(String nomeDocumento, Usuario usuario) {
+        this.nomeDocumento  = nomeDocumento;
+        this.usuario        = usuario;
+        this.texto          = "";
+        this.formatacao     = new Formatacao();
     }
     
-    //! Construtor que recebe o caminho para o arquivo (Como String)
-    public Documento(String arquivo) {
-        this.arquivo = new File(arquivo);
-        lerArquivo();
+    //! Retorna o nome do documento
+    @Id
+    @Column(name="NOME_DOCUMENTO")
+    public String getNomeDocumento() {
+        return nomeDocumento;
     }
-    
-    //! Construtor que recebe a pasta e o nome do arquivo (Geralmente para criação de novo arquivo)
-    public Documento(File pasta, String nome) {
-        if(!nome.endsWith(".txt"))      // Garante que o arquivo termine em .txt
-            nome = nome.concat(".txt"); 
-        this.arquivo = new File(pasta, nome);
-        lerArquivo();
-    }
-    
-    //! Le o conteúdo do arquivo
-    private void lerArquivo() {
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(arquivo);
-            byte[] data = new byte[(int) arquivo.length()];
-            fis.read(data);
-            fis.close();
-            texto = new String(data, "UTF-8");
-        } catch (FileNotFoundException ex) {
-            System.out.println("Arquivo não encontrado, criando...");
-            this.texto = "";
-        } catch (IOException ex) {
-            Logger.getLogger(Documento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    //! Salva o conteúdo no arquivo
-    public void salvarArquivo() {
-        try {
-            FileWriter fstream = new FileWriter(arquivo);
-            BufferedWriter out = new BufferedWriter(fstream);
-            out.write(texto);
-            out.close();
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
+   
+    //! Retorna o Usuario do Documento
+    @ManyToOne
+    @JoinColumn(name="USUARIO",insertable=false,updatable=false)
+    public Usuario getUsuario() {
+        return usuario;
     }
     
     //! Retorna o texto do documento
@@ -75,8 +54,15 @@ public class Documento {
     }
 
     //! Retorna a formatação do documento
+    @ManyToOne
+    @JoinColumn(name="FORMATACAO",insertable=false,updatable=false)
     public Formatacao getFormatacao() {
         return formatacao;
+    }
+
+    //! Altera o nome do documento
+    public void setNomeDocumento(String nomeDocumento) {
+        this.nomeDocumento = nomeDocumento;
     }
     
     //! Altera o texto do documento

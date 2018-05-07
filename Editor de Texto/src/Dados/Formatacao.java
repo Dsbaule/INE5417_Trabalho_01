@@ -11,10 +11,17 @@ package Dados;
 //! Importações necessárias
 import java.awt.Color;
 import java.awt.Font;
+import javax.persistence.*;
+
+//! Mapeamento SQL
+@Entity
+@Table (name="FORMATACAO")
+
 
 //! Classe para implementação de Formatação
 public class Formatacao {
     
+    private String  nomeFormatacao;
     private Font    fonte;
     private int     tamanho;
     private Color   corFonte;
@@ -22,6 +29,7 @@ public class Formatacao {
     
     //! Construtor para formatação padrão (Arial, 12, Preta em fundo branco)
     public Formatacao() {
+        this.nomeFormatacao = "Padrão";
         this.tamanho = 12;
         this.fonte = new Font("Arial", Font.PLAIN, this.tamanho);
         this.corFonte = Color.BLACK;
@@ -34,6 +42,13 @@ public class Formatacao {
         this.fonte = new Font(fonte, Font.PLAIN, this.tamanho);
         this.corFonte = corFonte;
         this.corFundo = corFundo;
+    }
+    
+    //! Retorna o nome da formatação
+    @Id
+    @Column(name="NOME_FORMATACAO")
+    public String getNomeFormatacao() {
+        return nomeFormatacao;
     }
     
     //! Retorna a fonte
@@ -54,6 +69,11 @@ public class Formatacao {
     //! Retorna a cor do plano de fundo
     public Color getCorFundo() {
         return corFundo;
+    }
+
+    //! Altera o nome da formatação
+    public void setNomeFormatacao(String nomeFormatacao) {
+        this.nomeFormatacao = nomeFormatacao;
     }
 
     //! Altera a fonte

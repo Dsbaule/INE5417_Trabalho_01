@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="INEdit">
+    <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+    <class>Dados.Documento</class>
+    <class>Dados.Formatacao</class>
+    <class>Dados.Usuario</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost/Exercicio03"/>
+      <property name="toplink.jdbc.user" value="postgres"/>
+      <property name="toplink.jdbc.password" value="postgres"/>
+      <property name="toplink.logging.level" value="OFF"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="INEditHibernate">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>Dados.Documento</class>
+    <class>Dados.Formatacao</class>
+    <class>Dados.Usuario</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.username" value="conferencia"/>
+      <property name="hibernate.connection.password" value="conferencia"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost/conferenciaBD"/>
+      <!--property name="hibernate.show_sql" value="true"/-->
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="INEditOpenJPA">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+    <class>Dados.Documento</class>
+    <class>Dados.Formatacao</class>
+    <class>Dados.Usuario</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+      <property name="openjpa.ConnectionUserName" value="conferencia"/>
+      <property name="openjpa.ConnectionPassword" value="conferencia"/>
+      <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost/conferenciaBD"/>
+      <property name="openjpa.MaxFetchDepth" value="0"/>
+      <property name="openjpa.jdbc.DBDictionary" value="derby"/>
+      <property name="openjpa.ConnectionRetainMode" value="always"/>
+      <!--property name="openjpa.Log" value="SQL=TRACE"/-->
+    </properties>
+  </persistence-unit>
+</persistence>
