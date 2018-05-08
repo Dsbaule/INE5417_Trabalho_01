@@ -8,18 +8,31 @@
 package Visao;
 
 import Dados.Documento;
+import Dados.Formatacao;
+import Dados.INEdit;
+import Dados.MapeadorDocumento;
+import Dados.MapeadorFormatacao;
+import Dados.MapeadorUsuario;
+import Dados.Usuario;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 public class EditorDeTexto extends javax.swing.JFrame {
 
+    Usuario usuario;
     Documento documento;
+    Formatacao formatacao;
+    
+    INEdit inedit;
 
     /**
      * Creates new form Tela_Principal
      */
     public EditorDeTexto() {
+        inedit = new INEdit();
+        
         initComponents();
+        
         this.setTitle("INEdit");        // Altera o título
         jTextArea1.setVisible(false);   // Inicia a área de texto sem edição habilitada
         BotaoSalvar.setEnabled(false);  // Inicia o botão salvar desabilitado (Até abertura ou criação de um arquivo)
@@ -36,6 +49,15 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
         JanelaEscolheArquivo = new javax.swing.JFileChooser();
         JanelaEscolhePasta = new javax.swing.JFileChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        JanelaEscolheUsuario = new javax.swing.JFrame();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -55,6 +77,74 @@ public class EditorDeTexto extends javax.swing.JFrame {
             JanelaEscolhePasta.setDialogTitle("Seleção de Pasta");
             JanelaEscolhePasta.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
             JanelaEscolhePasta.setToolTipText("Selecione a pasta onde sera criado o novo arquivo.");
+
+            jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane2.setViewportView(jList1);
+
+            JanelaEscolheUsuario.setPreferredSize(new java.awt.Dimension(500, 500));
+
+            jTextField1.setText("Nome");
+            jTextField1.setPreferredSize(new java.awt.Dimension(500, 50));
+            jTextField1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jTextField1ActionPerformed(evt);
+                }
+            });
+
+            jButton1.setText("Adicionar Usuário");
+
+            jList2.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane3.setViewportView(jList2);
+
+            jButton2.setText("Selecionar Usuário");
+
+            javax.swing.GroupLayout JanelaEscolheUsuarioLayout = new javax.swing.GroupLayout(JanelaEscolheUsuario.getContentPane());
+            JanelaEscolheUsuario.getContentPane().setLayout(JanelaEscolheUsuarioLayout);
+            JanelaEscolheUsuarioLayout.setHorizontalGroup(
+                JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                    .addContainerGap())
+            );
+            JanelaEscolheUsuarioLayout.setVerticalGroup(
+                JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 100, Short.MAX_VALUE)
+            );
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 100, Short.MAX_VALUE)
+            );
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +224,16 @@ public class EditorDeTexto extends javax.swing.JFrame {
     
     //! Botão para criação de um novo arquivo
     private void BotaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoNovoActionPerformed
+
+        String[] usuarios = inedit.retornaUsuarios();
+        
+        criaNovoUsuario();
+        
+        if(usuarios != null) {
+            Object[] options = usuarios;
+            Object selecao = JOptionPane.showInputDialog(this, "Choose", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        }
+
         int returnVal = JanelaEscolhePasta.showOpenDialog(this);    // Obtem a pasta para criação do novo arquivo através de um dialogo do sistema
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String NomeArquivo = JOptionPane.showInputDialog(this, "Nome do arquivo:", "Novo Arquivo", JOptionPane.PLAIN_MESSAGE);  // Obtem o nome para o novo arquivo
@@ -179,6 +279,10 @@ public class EditorDeTexto extends javax.swing.JFrame {
         telaAjuda.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +318,18 @@ public class EditorDeTexto extends javax.swing.JFrame {
             }
         });
     }
+    
+    private Usuario criaNovoUsuario() {
+        Usuario usuarioCriado = null;
+        while(usuarioCriado == null) {
+            String nomeUsuario = JOptionPane.showInputDialog(this, "Nome do Usuario:", "Novo Usuario", JOptionPane.PLAIN_MESSAGE);  // Obtem o nome para o novo Usuario;
+            if(inedit.retornaUsuario(nomeUsuario) == null) {
+                inedit.cadastraUsuario(new Usuario(nomeUsuario));
+                usuarioCriado = inedit.retornaUsuario(nomeUsuario);
+            }
+        }
+        return usuarioCriado;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem BotaoAbrir;
@@ -221,13 +337,22 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JMenuItem BotaoSalvar;
     private javax.swing.JFileChooser JanelaEscolheArquivo;
     private javax.swing.JFileChooser JanelaEscolhePasta;
+    private javax.swing.JFrame JanelaEscolheUsuario;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
 
