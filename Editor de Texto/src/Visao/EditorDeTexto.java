@@ -43,6 +43,9 @@ public class EditorDeTexto extends javax.swing.JFrame {
         BotaoNovo = new javax.swing.JMenuItem();
         BotaoAbrir = new javax.swing.JMenuItem();
         BotaoSalvar = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         JanelaEscolheArquivo.setCurrentDirectory(new java.io.File("C:\\"));
             JanelaEscolheArquivo.setDialogTitle("Seleção de Arquivo");
@@ -92,6 +95,26 @@ public class EditorDeTexto extends javax.swing.JFrame {
             jMenu1.add(BotaoSalvar);
 
             jMenuBar1.add(jMenu1);
+
+            jMenu2.setText("INEdit");
+
+            jMenuItem1.setText("Sobre");
+            jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem1ActionPerformed(evt);
+                }
+            });
+            jMenu2.add(jMenuItem1);
+
+            jMenuItem2.setText("Ajuda");
+            jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem2ActionPerformed(evt);
+                }
+            });
+            jMenu2.add(jMenuItem2);
+
+            jMenuBar1.add(jMenu2);
 
             setJMenuBar(jMenuBar1);
 
@@ -143,6 +166,19 @@ public class EditorDeTexto extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Arquivo Salvo");   // Mostrar um diálogo para confirmação do salvamento do arquivo
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaSobre telaSobre = new TelaSobre();
+        telaSobre.setLocationRelativeTo(this);
+        telaSobre.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        telaSobre.setVisible(true);    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        TelaAjuda telaAjuda = new TelaAjuda();
+        telaAjuda.setLocationRelativeTo(this);
+        telaAjuda.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        telaAjuda.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,7 +222,10 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JFileChooser JanelaEscolheArquivo;
     private javax.swing.JFileChooser JanelaEscolhePasta;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
