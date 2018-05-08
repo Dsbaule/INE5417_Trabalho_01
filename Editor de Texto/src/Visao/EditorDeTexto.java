@@ -49,18 +49,15 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
         JanelaEscolheArquivo = new javax.swing.JFileChooser();
         JanelaEscolhePasta = new javax.swing.JFileChooser();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         JanelaEscolheUsuario = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaDoTexto = new javax.swing.JTextArea();
-        barraDoMenu = new javax.swing.JMenuBar();
+        jMenuBar1 = new javax.swing.JMenuBar();
         botaoArquivo = new javax.swing.JMenu();
         BotaoNovo = new javax.swing.JMenuItem();
         BotaoAbrir = new javax.swing.JMenuItem();
@@ -69,21 +66,14 @@ public class EditorDeTexto extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         botaoAjuda = new javax.swing.JMenuItem();
 
-        JanelaEscolheArquivo.setCurrentDirectory(new java.io.File("/home/100000000473471/C:"));
-        JanelaEscolheArquivo.setDialogTitle("Seleção de Arquivo");
-        JanelaEscolheArquivo.setFileFilter(new FiltroArquivo());
-        JanelaEscolheArquivo.setToolTipText("Selecione o arquivo .txt a ser aberto.");
+        JanelaEscolheArquivo.setCurrentDirectory(new java.io.File("C:\\"));
+            JanelaEscolheArquivo.setDialogTitle("Seleção de Arquivo");
+            JanelaEscolheArquivo.setFileFilter(new FiltroArquivo());
+            JanelaEscolheArquivo.setToolTipText("Selecione o arquivo .txt a ser aberto.");
 
             JanelaEscolhePasta.setDialogTitle("Seleção de Pasta");
             JanelaEscolhePasta.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
             JanelaEscolhePasta.setToolTipText("Selecione a pasta onde sera criado o novo arquivo.");
-
-            jList1.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });
-            jScrollPane2.setViewportView(jList1);
 
             JanelaEscolheUsuario.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -135,92 +125,81 @@ public class EditorDeTexto extends javax.swing.JFrame {
                     .addContainerGap())
             );
 
-            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-            jPanel1.setLayout(jPanel1Layout);
-            jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 100, Short.MAX_VALUE)
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+            AreaDoTexto.setColumns(20);
+            AreaDoTexto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+            AreaDoTexto.setLineWrap(true);
+            AreaDoTexto.setRows(5);
+            AreaDoTexto.setTabSize(4);
+            jScrollPane1.setViewportView(AreaDoTexto);
+
+            botaoArquivo.setText("Arquivo");
+
+            BotaoNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+            BotaoNovo.setText("Novo");
+            BotaoNovo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    BotaoNovoActionPerformed(evt);
+                }
+            });
+            botaoArquivo.add(BotaoNovo);
+
+            BotaoAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+            BotaoAbrir.setText("Abrir");
+            BotaoAbrir.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    BotaoAbrirActionPerformed(evt);
+                }
+            });
+            botaoArquivo.add(BotaoAbrir);
+
+            BotaoSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+            BotaoSalvar.setText("Salvar");
+            BotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    BotaoSalvarActionPerformed(evt);
+                }
+            });
+            botaoArquivo.add(BotaoSalvar);
+
+            jMenuBar1.add(botaoArquivo);
+
+            botaoINEdit.setText("INEdit");
+
+            jMenuItem1.setText("Sobre");
+            jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem1ActionPerformed(evt);
+                }
+            });
+            botaoINEdit.add(jMenuItem1);
+
+            botaoAjuda.setText("Ajuda");
+            botaoAjuda.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    botaoAjudaActionPerformed(evt);
+                }
+            });
+            botaoINEdit.add(botaoAjuda);
+
+            jMenuBar1.add(botaoINEdit);
+
+            setJMenuBar(jMenuBar1);
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             );
-            jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 100, Short.MAX_VALUE)
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
             );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        AreaDoTexto.setColumns(20);
-        AreaDoTexto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        AreaDoTexto.setLineWrap(true);
-        AreaDoTexto.setRows(5);
-        AreaDoTexto.setTabSize(4);
-        jScrollPane1.setViewportView(AreaDoTexto);
-
-        botaoArquivo.setText("Arquivo");
-
-        BotaoNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        BotaoNovo.setText("Novo");
-        BotaoNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoNovoActionPerformed(evt);
-            }
-        });
-        botaoArquivo.add(BotaoNovo);
-
-        BotaoAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        BotaoAbrir.setText("Abrir");
-        BotaoAbrir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoAbrirActionPerformed(evt);
-            }
-        });
-        botaoArquivo.add(BotaoAbrir);
-
-        BotaoSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        BotaoSalvar.setText("Salvar");
-        BotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoSalvarActionPerformed(evt);
-            }
-        });
-        botaoArquivo.add(BotaoSalvar);
-
-        barraDoMenu.add(botaoArquivo);
-
-        botaoINEdit.setText("INEdit");
-
-        jMenuItem1.setText("Sobre");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        botaoINEdit.add(jMenuItem1);
-
-        botaoAjuda.setText("Ajuda");
-        botaoAjuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAjudaActionPerformed(evt);
-            }
-        });
-        botaoINEdit.add(botaoAjuda);
-
-        barraDoMenu.add(botaoINEdit);
-
-        setJMenuBar(barraDoMenu);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
     
     //! Botão para criação de um novo arquivo
     private void BotaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoNovoActionPerformed
@@ -340,20 +319,16 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JFileChooser JanelaEscolheArquivo;
     private javax.swing.JFileChooser JanelaEscolhePasta;
     private javax.swing.JFrame JanelaEscolheUsuario;
+    private javax.swing.JMenuItem botaoAjuda;
+    private javax.swing.JMenu botaoArquivo;
+    private javax.swing.JMenu botaoINEdit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
