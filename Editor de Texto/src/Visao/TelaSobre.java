@@ -31,32 +31,12 @@ public class TelaSobre extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ajuda");
-        setPreferredSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(400, 500));
 
         labelAjuda.setText("<html>"
-            + "Atalhos <br/>" +
-            "Novo ->  Ctrl + N <br/>" +
-            "Abrir ->  Ctrl + O <br/>" +
-            "Salvar ->  Ctrl + S <br/>" +
-            "Salvar como <br/>" +
-            "<br/>" +
-            "Para criar um novo arquivo: <br/>" +
-            "no Menu, clique em Arquivo e depois em Novo.<br/>" +
-            "<br/>" +
-            "Para abrir um arquivo: <br/>" +
-            "no Menu, clique em Arquivo e depois em Abrir. <br/>" +
-            "<br/>" +
-            "Para salvar um novo arquivo:<br/>" +
-            "no Menu, clique em Arquivo e depois em Salvar.<br/>" +
-            "<br/>" +
-            "Para Salvar como um novo arquivo: <br/>" +
-            "no Menu, clique em Arquivo e depois em Salvar como. <br/>" +
-            "<br/>" +
-            "Para exibir a janela ajuda:<br/>" +
-            "no Menu, clique em Ajuda e depois em Ajuda.<br/>" +
-            "<br/>" +
-            "Para exibir a janela sobre:<br/>" +
-            "no Menu, clique em Ajuda e depois em Sobre."
+            + "INEdit <br/>" +
+            "Versão 1.0 <br/>" +
+            "Este software foi desenvolvido na disciplina Engenharia de Software I por Daniel de Souza Baulé e Mirian de França Santos no semestre 2018.1."
             + "<br/>"
             + "<html/>");
 
