@@ -1,146 +1,130 @@
+/* --------------------------------------------------------------------------------
+ * Autores:     Daniel de Souza Baulé
+ *              Mirian de França Santos Pereira
+ * Disciplina:  INE5417 - Engenharia de Software
+ * Projeto:     Edito de Texto
+-------------------------------------------------------------------------------- */
+
+//! Declaração do pacote
 package Dados;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.util.List;
+//! Importações necessárias
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import javax.persistence.*;
-
+//! Classe para mapeamento do editor para SQL
 public class INEdit {
-	
-	private static EntityManagerFactory factory;
-	private static EntityManager em;
-	
-	public INEdit (){
-	    	try {
-	    		factory = Persistence.createEntityManagerFactory("inedit_toplink"); // utiliza o TopLink-JPA - ver META-INF/persistence.xml para detalhes sobre esta configuracao
-	    		em = factory.createEntityManager();
-	    	} catch (Exception e) {
-	    		e.printStackTrace();
-	    		throw new java.lang.RuntimeException("erro ao configurar o mapeador");
-	    	}
-	}
-		
-	public void apagaTodosDadosDoBD () {
-	    	try {
-	    		em.getTransaction().begin();
-	    		em.createQuery("delete from Usuario u").executeUpdate();
-	    		em.createQuery("delete from Formatacao f").executeUpdate();
-	    		em.createQuery("delete from Documento d").executeUpdate();
-	    		em.getTransaction().commit();
-	    		em.clear();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new java.lang.RuntimeException("erro ao apagar todos os dados do BD");
-		}
-	}
-	
-	// USUARIO
 
-	public void cadastraUsuario(String nome) {
-		try {
-			em.getTransaction().begin();
-                        Usuario usuario = em.find(Usuario.class, nome);
-			if (usuario == null){			
-				usuario = new Usuario(nome);
-			}
-			em.persist(usuario);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new java.lang.RuntimeException("erro ao inserir usuario");
-		}
-	}	
-		
-	public Usuario retornaUsuario(String nome) {
-		try {
-			return em.find(Usuario.class, nome);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    private Connection con;
 
-	public void removeAluno(String nome) {
-		try {
-			em.remove(em.find(Usuario.class, nome));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private MapeadorUsuario     mapeadorUsuario;
+    private MapeadorFormatacao  mapeadorFormatacao;
+    private MapeadorDocumento   mapeadorDocumento;
 
-	// DOCUMENTO
-	
-	public void cadastraDocumento(String nomeDocumento, Usuario usuario, String texto, Formatacao formatacao) {
-		try {
-			em.getTransaction().begin();
-			Documento documento = em.find(Documento.class, nomeDocumento);
-			if (documento == null){			
-				documento = new Documento(nomeDocumento, usuario);
-			}
-                        documento.setTexto(texto);
-                        documento.setFormatacao(formatacao);
-			em.persist(documento);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new java.lang.RuntimeException("erro ao inserir documento");
-		}
-	}
-	
-	public Documento retornaDocumento(String nomeDocumento) {
-		try {
-			return em.find(Documento.class, nomeDocumento);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    public INEdit() {
+        try {
+            // BD Postgres
+            Class.forName("org.postgresql.Driver");
+            this.con = DriverManager.getConnection("jdbc:postgresql://localhost/INEdit", "postgres", "postgres");
+            this.mapeadorUsuario    = new MapeadorUsuario(con);
+            this.mapeadorFormatacao = new MapeadorFormatacao(con);
+            this.mapeadorDocumento  = new MapeadorDocumento(con);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new java.lang.RuntimeException("Erro ao conectar!");
+        }
+    }
 
-	public void removeDocumento(String nomeDocumento) {
-		try {
-			em.remove(em.find(Documento.class, nomeDocumento));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public void apagaTodosDadosDoBD() {
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM USUARIO");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new java.lang.RuntimeException("erro ao apagar todos os dados do BD");
+        } finally {
+            try {
+                stmt.close();
+            } catch (Exception ignore) {
+            }
+        }
+    }
 
-	// FORMATACAO
-	
-	public void cadastraFormatacao(String nomeFormatacao, Font fonte, int tamanho, Color corFonte, Color corFundo) {
-		try {
-			em.getTransaction().begin();
-			Formatacao formatacao = em.find(Formatacao.class, nomeFormatacao);
-			if (formatacao == null){			
-				formatacao = new Formatacao();
-			}
-			formatacao.setNomeFormatacao(nomeFormatacao);
-                        formatacao.setFonte(fonte);
-                        formatacao.setTamanho(tamanho);
-                        formatacao.setCorFonte(corFonte);
-                        formatacao.setCorFundo(corFundo);
-			em.persist(formatacao);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new java.lang.RuntimeException("erro ao inserir formatacao");
-		}
-	}
-		
-	public Formatacao retornaFormatacao(String nomeFormatacao) {
-		try {
-			return em.find(Formatacao.class, nomeFormatacao);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    public void cadastraUsuario(Usuario usuario) {
+        try {
+            mapeadorUsuario.put(usuario);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void removeFormatacao(String nomeFormatacao) {
-		try {
-			em.remove(em.find(Formatacao.class, nomeFormatacao));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public Usuario retornaUsuario(String nome) {
+        try {
+            return mapeadorUsuario.get(nome);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void removeUsuario(String nome) {
+        try {
+            mapeadorUsuario.remove(nome);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void cadastraFormatacao(Formatacao formatacao) {
+        try {
+            mapeadorFormatacao.put(formatacao);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Formatacao retornaFormatacao(String nomeFormatacao) {
+        try {
+            return mapeadorFormatacao.get(nomeFormatacao);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void removeFormatacao(String nomeFormatacao) {
+        try {
+            mapeadorUsuario.remove(nomeFormatacao);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void cadastraDocumento(Documento documento) {
+        try {
+            mapeadorDocumento.put(documento);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Documento retornaDocumento(String nomeDocumento) {
+        try {
+            return mapeadorDocumento.get(nomeDocumento);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void removeDocumento(String nomeDocumento) {
+        try {
+            mapeadorDocumento.remove(nomeDocumento);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

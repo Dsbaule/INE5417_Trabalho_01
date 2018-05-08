@@ -13,11 +13,8 @@ import java.awt.List;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.*;
 
 //! Mapeamento SQL
-@Entity
-@Table (name="USUARIO")
 
 //! Classe para implementação de um documento
 public class Usuario {
@@ -29,8 +26,6 @@ public class Usuario {
         this.nome = nome;
     }
     
-    @Id
-    @Column(name="NOME_USUARIO")
     public String getNome() {
         return nome;
     }

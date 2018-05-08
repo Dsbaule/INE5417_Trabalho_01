@@ -9,41 +9,49 @@
 package Dados;
 
 //! Importações necessárias
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.persistence.*;
 
 //! Mapeamento SQL
-@Entity
-@Table (name="DOCUMENTO")
 
 //! Classe para implementação de um documento
 public class Documento {
 
     private String nomeDocumento;   // Nome do Documento
+    private String filePath;        // Caminho do Documento
     private Usuario usuario;        // Usuario do Documento
     private String texto;           // Texto do Documento
     private Formatacao formatacao;  // Formatação do Documento
     
     //! Construtor para novo arquivo;
-    public Documento(String nomeDocumento, Usuario usuario) {
+    public Documento() {
+        
+    }
+    
+    //! Construtor para novo arquivo;
+    public Documento(String nomeDocumento, String filePath, Usuario usuario) {
         this.nomeDocumento  = nomeDocumento;
+        this.filePath       = filePath;
         this.usuario        = usuario;
         this.texto          = "";
         this.formatacao     = new Formatacao();
     }
     
+    //! Construtor para novo arquivo;
+    public Documento(String nomeDocumento, String filePath, Usuario usuario, Formatacao formatacao) {
+        this(nomeDocumento, filePath, usuario);
+        this.formatacao = formatacao;
+    }
+    
     //! Retorna o nome do documento
-    @Id
-    @Column(name="NOME_DOCUMENTO")
     public String getNomeDocumento() {
         return nomeDocumento;
     }
+    
+    //! Retorna o nome do documento
+    public String getFilePath() {
+        return filePath;
+    }
    
     //! Retorna o Usuario do Documento
-    @ManyToOne
-    @JoinColumn(name="USUARIO",insertable=false,updatable=false)
     public Usuario getUsuario() {
         return usuario;
     }
@@ -54,8 +62,6 @@ public class Documento {
     }
 
     //! Retorna a formatação do documento
-    @ManyToOne
-    @JoinColumn(name="FORMATACAO",insertable=false,updatable=false)
     public Formatacao getFormatacao() {
         return formatacao;
     }
@@ -63,6 +69,17 @@ public class Documento {
     //! Altera o nome do documento
     public void setNomeDocumento(String nomeDocumento) {
         this.nomeDocumento = nomeDocumento;
+    }
+    
+    
+    //! Retorna o nome do documento
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+    
+    //! Altera o usuario do documento
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     //! Altera o texto do documento

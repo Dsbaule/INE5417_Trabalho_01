@@ -114,7 +114,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         int returnVal = JanelaEscolhePasta.showOpenDialog(this);    // Obtem a pasta para criação do novo arquivo através de um dialogo do sistema
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String NomeArquivo = JOptionPane.showInputDialog(this, "Nome do arquivo:", "Novo Arquivo", JOptionPane.PLAIN_MESSAGE);  // Obtem o nome para o novo arquivo
-            documento = new Documento(JanelaEscolhePasta.getSelectedFile(), NomeArquivo);   // Criação do novo documento
+            // documento = new Documento(JanelaEscolhePasta.getSelectedFile(), NomeArquivo);   // Criação do novo documento
             jTextArea1.setText(documento.getTexto());   // Leitura do arquivo (Provavelmente vazio)
             jTextArea1.setVisible(true);    // Habilitação da edição de texto
             BotaoSalvar.setEnabled(true);   // Habilitação do botão salvar
@@ -127,7 +127,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private void BotaoAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAbrirActionPerformed
         int returnVal = JanelaEscolheArquivo.showOpenDialog(this);    // Obtem o caminho para o arquivo a ser aberto através de um diálogo do sistema
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            documento = new Documento(JanelaEscolheArquivo.getSelectedFile());  // Lê o documento selecionado
+            // documento = new Documento(JanelaEscolheArquivo.getSelectedFile());  // Lê o documento selecionado
             jTextArea1.setText(documento.getTexto());   // Leitura do texto
             jTextArea1.setVisible(true);    // Habilitação da edição de texto
             BotaoSalvar.setEnabled(true);   // Habilitação do botão salvar
@@ -139,7 +139,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
     //! Botão para salvar o arquivo
     private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
         documento.setTexto(jTextArea1.getText());   // Alteração do texto do documento
-        documento.salvarArquivo();  // Salvar o documento
+        // documento.salvarArquivo();  // Salvar o documento
         JOptionPane.showMessageDialog(this, "Arquivo Salvo");   // Mostrar um diálogo para confirmação do salvamento do arquivo
     }//GEN-LAST:event_BotaoSalvarActionPerformed
 

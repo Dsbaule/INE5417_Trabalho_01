@@ -5,6 +5,12 @@
  */
 package Tests;
 
+import Dados.Documento;
+import Dados.Formatacao;
+import Dados.INEdit;
+import Dados.Usuario;
+import java.awt.Color;
+import java.awt.Font;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,28 +24,24 @@ import static org.junit.Assert.*;
  */
 public class TestesDocumento {
     
-    public TestesDocumento() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    INEdit inedit = new INEdit();
     
     @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public void removeTodosOsDados() {
+        inedit.apagaTodosDadosDoBD();
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void cadastraDocumento() {
+        Usuario user = new Usuario("User1");
+        inedit.cadastraUsuario(user);
+        Formatacao form = new Formatacao("Form1", 0, 12, 0, 1);
+        inedit.cadastraFormatacao(form);
+        Documento documento = new Documento("Doc1", "C://", user, form);
+        inedit.cadastraDocumento(documento);
+        assertEquals ("Doc1", inedit.retornaDocumento("Doc1").getNomeDocumento());
+        assertEquals ("C://", inedit.retornaDocumento("Doc1").getFilePath());
+        assertEquals ("User1", inedit.retornaDocumento("Doc1").getUsuario().getNome());
+        assertEquals ("Form1", inedit.retornaDocumento("Doc1").getFormatacao().getNomeFormatacao());
+    }
 }

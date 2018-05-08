@@ -1,45 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* --------------------------------------------------------------------------------
+ * Autores:     Daniel de Souza Baulé
+ *              Mirian de França Santos Pereira
+ * Disciplina:  INE5417 - Engenharia de Software
+ * Projeto:     Edito de Texto
+-------------------------------------------------------------------------------- */
+
+//! Declaração do pacote
 package Tests;
 
-import org.junit.After;
-import org.junit.AfterClass;
+//! Importações necessárias
+import Dados.Formatacao;
+import Dados.INEdit;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Daniel
- */
+//! Testes para mapeamento de Usuário
 public class TestesFormatacao {
     
-    public TestesFormatacao() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    INEdit inedit = new INEdit();
     
     @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public void removeTodosOsDados() {
+        inedit.apagaTodosDadosDoBD();
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void cadastraFormatacao() {
+        Formatacao form = new Formatacao("Form1", 12, 0, 0, 1);
+        inedit.cadastraFormatacao(form);
+        assertEquals ("Form1", inedit.retornaFormatacao("Form1").getNomeFormatacao());
+        assertEquals (12, inedit.retornaFormatacao("Form1").getTamanho());
+        assertEquals (0, inedit.retornaFormatacao("Form1").getFonte());
+        assertEquals (0, inedit.retornaFormatacao("Form1").getCorFonte());
+        assertEquals (1, inedit.retornaFormatacao("Form1").getCorFundo());
+    }
 }
