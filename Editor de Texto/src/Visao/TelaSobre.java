@@ -27,13 +27,13 @@ public class TelaSobre extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelAjuda = new javax.swing.JLabel();
+        labelSobre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ajuda");
         setPreferredSize(new java.awt.Dimension(400, 500));
 
-        labelAjuda.setText("<html>"
+        labelSobre.setText("<html>"
             + "INEdit <br/>" +
             "Versão 1.0 <br/>" +
             "Este software foi desenvolvido na disciplina Engenharia de Software I por Daniel de Souza Baulé e Mirian de França Santos no semestre 2018.1."
@@ -45,13 +45,13 @@ public class TelaSobre extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(labelAjuda)
+                .addComponent(labelSobre)
                 .addGap(0, 297, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(labelAjuda)
+                .addComponent(labelSobre)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -95,6 +95,6 @@ public class TelaSobre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelAjuda;
+    private javax.swing.JLabel labelSobre;
     // End of variables declaration//GEN-END:variables
 }
