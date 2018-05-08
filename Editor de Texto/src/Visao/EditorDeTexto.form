@@ -21,7 +21,7 @@
         <Property name="toolTipText" type="java.lang.String" value="Selecione a pasta onde sera criado o novo arquivo."/>
       </Properties>
     </Component>
-    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+    <Menu class="javax.swing.JMenuBar" name="barraDoMenu">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="botaoArquivo">
           <Properties>
@@ -93,7 +93,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="barraDoMenu"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>

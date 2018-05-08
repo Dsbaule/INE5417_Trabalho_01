@@ -38,7 +38,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         JanelaEscolhePasta = new javax.swing.JFileChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaDoTexto = new javax.swing.JTextArea();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        barraDoMenu = new javax.swing.JMenuBar();
         botaoArquivo = new javax.swing.JMenu();
         BotaoNovo = new javax.swing.JMenuItem();
         BotaoAbrir = new javax.swing.JMenuItem();
@@ -94,7 +94,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         });
         botaoArquivo.add(BotaoSalvar);
 
-        jMenuBar1.add(botaoArquivo);
+        barraDoMenu.add(botaoArquivo);
 
         botaoINEdit.setText("INEdit");
 
@@ -114,9 +114,9 @@ public class EditorDeTexto extends javax.swing.JFrame {
         });
         botaoINEdit.add(botaoAjuda);
 
-        jMenuBar1.add(botaoINEdit);
+        barraDoMenu.add(botaoINEdit);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(barraDoMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,10 +223,10 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JMenuItem BotaoSalvar;
     private javax.swing.JFileChooser JanelaEscolheArquivo;
     private javax.swing.JFileChooser JanelaEscolhePasta;
+    private javax.swing.JMenuBar barraDoMenu;
     private javax.swing.JMenuItem botaoAjuda;
     private javax.swing.JMenu botaoArquivo;
     private javax.swing.JMenu botaoINEdit;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
