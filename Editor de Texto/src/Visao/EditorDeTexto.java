@@ -49,20 +49,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JanelaEscolheArquivoAntiga = new javax.swing.JFileChooser();
         JanelaEscolhePasta = new javax.swing.JFileChooser();
-        JanelaEscolheUsuario = new javax.swing.JFrame();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
-        JanelaEscolheArquivo = new javax.swing.JFrame();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-        jButton4 = new javax.swing.JButton();
         PainelEscolheArquivo = new javax.swing.JPanel();
         textFieldNomeArquivo = new javax.swing.JTextField();
         botaoAdicionarArquivo = new javax.swing.JButton();
@@ -89,326 +76,217 @@ public class EditorDeTexto extends javax.swing.JFrame {
         menuBotaoSobre = new javax.swing.JMenuItem();
         menuBotaoAjuda = new javax.swing.JMenuItem();
 
-        JanelaEscolheArquivoAntiga.setCurrentDirectory(new java.io.File("C:\\"));
-            JanelaEscolheArquivoAntiga.setDialogTitle("Seleção de Arquivo");
-            JanelaEscolheArquivoAntiga.setFileFilter(new FiltroArquivo());
-            JanelaEscolheArquivoAntiga.setToolTipText("Selecione o arquivo .txt a ser aberto.");
+        JanelaEscolhePasta.setDialogTitle("Seleção de Pasta");
+        JanelaEscolhePasta.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+        JanelaEscolhePasta.setToolTipText("Selecione a pasta onde sera criado o novo arquivo.");
 
-            JanelaEscolhePasta.setDialogTitle("Seleção de Pasta");
-            JanelaEscolhePasta.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
-            JanelaEscolhePasta.setToolTipText("Selecione a pasta onde sera criado o novo arquivo.");
+        PainelEscolheArquivo.setMinimumSize(new java.awt.Dimension(500, 500));
 
-            JanelaEscolheUsuario.setMinimumSize(new java.awt.Dimension(500, 500));
-            JanelaEscolheUsuario.setPreferredSize(new java.awt.Dimension(500, 500));
+        textFieldNomeArquivo.setText("Nome");
+        textFieldNomeArquivo.setPreferredSize(new java.awt.Dimension(500, 50));
+        textFieldNomeArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNomeArquivoActionPerformed(evt);
+            }
+        });
 
-            jTextField1.setEditable(false);
-            jTextField1.setText("Nome");
-            jTextField1.setPreferredSize(new java.awt.Dimension(500, 50));
-            jTextField1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextField1ActionPerformed(evt);
-                }
-            });
+        botaoAdicionarArquivo.setText("Adicionar Arquivo");
+        botaoAdicionarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAdicionarArquivoActionPerformed(evt);
+            }
+        });
 
-            jButton1.setText("Adicionar Usuário");
-            jButton1.setEnabled(false);
+        listaDeArquivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane5.setViewportView(listaDeArquivos);
 
-            jList2.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });
-            jScrollPane3.setViewportView(jList2);
+        BotaoSelecionarArquivo.setText("Selecionar Arquivo");
+        BotaoSelecionarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoSelecionarArquivoActionPerformed(evt);
+            }
+        });
 
-            jButton2.setText("Selecionar Usuário");
+        javax.swing.GroupLayout PainelEscolheArquivoLayout = new javax.swing.GroupLayout(PainelEscolheArquivo);
+        PainelEscolheArquivo.setLayout(PainelEscolheArquivoLayout);
+        PainelEscolheArquivoLayout.setHorizontalGroup(
+            PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
+                    .addComponent(BotaoSelecionarArquivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
+                        .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        PainelEscolheArquivoLayout.setVerticalGroup(
+            PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotaoSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-            javax.swing.GroupLayout JanelaEscolheUsuarioLayout = new javax.swing.GroupLayout(JanelaEscolheUsuario.getContentPane());
-            JanelaEscolheUsuario.getContentPane().setLayout(JanelaEscolheUsuarioLayout);
-            JanelaEscolheUsuarioLayout.setHorizontalGroup(
-                JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
-                    .addContainerGap())
-            );
-            JanelaEscolheUsuarioLayout.setVerticalGroup(
-                JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JanelaEscolheUsuarioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(JanelaEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
-            );
+        AreaDoTexto.setColumns(20);
+        AreaDoTexto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        AreaDoTexto.setLineWrap(true);
+        AreaDoTexto.setRows(5);
+        AreaDoTexto.setTabSize(4);
+        jScrollPane1.setViewportView(AreaDoTexto);
 
-            JanelaEscolheArquivo.setMinimumSize(new java.awt.Dimension(500, 500));
-            JanelaEscolheArquivo.setPreferredSize(new java.awt.Dimension(500, 500));
+        javax.swing.GroupLayout PainelEdicaoTextoLayout = new javax.swing.GroupLayout(PainelEdicaoTexto);
+        PainelEdicaoTexto.setLayout(PainelEdicaoTextoLayout);
+        PainelEdicaoTextoLayout.setHorizontalGroup(
+            PainelEdicaoTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+        );
+        PainelEdicaoTextoLayout.setVerticalGroup(
+            PainelEdicaoTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+        );
 
-            jTextField2.setText("Nome");
-            jTextField2.setPreferredSize(new java.awt.Dimension(500, 50));
-            jTextField2.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextField2ActionPerformed(evt);
-                }
-            });
+        PainelEscolheUsuario.setMinimumSize(new java.awt.Dimension(500, 500));
 
-            jButton3.setText("Adicionar Arquivo");
+        jTextField4.setEditable(false);
+        jTextField4.setText("Nome");
+        jTextField4.setPreferredSize(new java.awt.Dimension(500, 50));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
-            jList3.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });
-            jScrollPane4.setViewportView(jList3);
+        jButton7.setText("Adicionar Usuário");
+        jButton7.setEnabled(false);
 
-            jButton4.setText("Selecionar Usuário");
+        listaDeUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaDeUsuarios.setToolTipText("");
+        listaDeUsuarios.setAutoscrolls(false);
+        jScrollPane6.setViewportView(listaDeUsuarios);
 
-            javax.swing.GroupLayout JanelaEscolheArquivoLayout = new javax.swing.GroupLayout(JanelaEscolheArquivo.getContentPane());
-            JanelaEscolheArquivo.getContentPane().setLayout(JanelaEscolheArquivoLayout);
-            JanelaEscolheArquivoLayout.setHorizontalGroup(
-                JanelaEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JanelaEscolheArquivoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(JanelaEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane4)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(JanelaEscolheArquivoLayout.createSequentialGroup()
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
-                    .addContainerGap())
-            );
-            JanelaEscolheArquivoLayout.setVerticalGroup(
-                JanelaEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JanelaEscolheArquivoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(JanelaEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
-            );
+        BotaoSelecionarUsuario.setText("Selecionar Usuário");
+        BotaoSelecionarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoSelecionarUsuarioActionPerformed(evt);
+            }
+        });
 
-            PainelEscolheArquivo.setMinimumSize(new java.awt.Dimension(500, 500));
+        textFieldSelecioneUsuario.setEditable(false);
+        textFieldSelecioneUsuario.setText("Selecione um Usuario:");
+        textFieldSelecioneUsuario.setBorder(null);
 
-            textFieldNomeArquivo.setText("Nome");
-            textFieldNomeArquivo.setPreferredSize(new java.awt.Dimension(500, 50));
-            textFieldNomeArquivo.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    textFieldNomeArquivoActionPerformed(evt);
-                }
-            });
+        javax.swing.GroupLayout PainelEscolheUsuarioLayout = new javax.swing.GroupLayout(PainelEscolheUsuario);
+        PainelEscolheUsuario.setLayout(PainelEscolheUsuarioLayout);
+        PainelEscolheUsuarioLayout.setHorizontalGroup(
+            PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldSelecioneUsuario)
+                    .addComponent(jScrollPane6)
+                    .addComponent(BotaoSelecionarUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        PainelEscolheUsuarioLayout.setVerticalGroup(
+            PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldSelecioneUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotaoSelecionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-            botaoAdicionarArquivo.setText("Adicionar Arquivo");
-            botaoAdicionarArquivo.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    botaoAdicionarArquivoActionPerformed(evt);
-                }
-            });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-            listaDeArquivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-            jScrollPane5.setViewportView(listaDeArquivos);
+        menuUsuario.setText("Usuário");
 
-            BotaoSelecionarArquivo.setText("Selecionar Arquivo");
-            BotaoSelecionarArquivo.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    BotaoSelecionarArquivoActionPerformed(evt);
-                }
-            });
+        menuBotaoAlterarUsuario.setText("Alterar Usuário");
+        menuBotaoAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBotaoAlterarUsuarioActionPerformed(evt);
+            }
+        });
+        menuUsuario.add(menuBotaoAlterarUsuario);
 
-            javax.swing.GroupLayout PainelEscolheArquivoLayout = new javax.swing.GroupLayout(PainelEscolheArquivo);
-            PainelEscolheArquivo.setLayout(PainelEscolheArquivoLayout);
-            PainelEscolheArquivoLayout.setHorizontalGroup(
-                PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane5)
-                        .addComponent(BotaoSelecionarArquivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
-                            .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
-                    .addContainerGap())
-            );
-            PainelEscolheArquivoLayout.setVerticalGroup(
-                PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(BotaoSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
-            );
+        barraMenu.add(menuUsuario);
 
-            AreaDoTexto.setColumns(20);
-            AreaDoTexto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-            AreaDoTexto.setLineWrap(true);
-            AreaDoTexto.setRows(5);
-            AreaDoTexto.setTabSize(4);
-            jScrollPane1.setViewportView(AreaDoTexto);
+        menuArquivo.setText("Arquivo");
 
-            javax.swing.GroupLayout PainelEdicaoTextoLayout = new javax.swing.GroupLayout(PainelEdicaoTexto);
-            PainelEdicaoTexto.setLayout(PainelEdicaoTextoLayout);
-            PainelEdicaoTextoLayout.setHorizontalGroup(
-                PainelEdicaoTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-            );
-            PainelEdicaoTextoLayout.setVerticalGroup(
-                PainelEdicaoTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
-            );
+        menuBotaoAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        menuBotaoAbrir.setText("Trocar");
+        menuBotaoAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBotaoAbrirActionPerformed(evt);
+            }
+        });
+        menuArquivo.add(menuBotaoAbrir);
 
-            PainelEscolheUsuario.setMinimumSize(new java.awt.Dimension(500, 500));
+        menuBotaoSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        menuBotaoSalvar.setText("Salvar");
+        menuBotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBotaoSalvarActionPerformed(evt);
+            }
+        });
+        menuArquivo.add(menuBotaoSalvar);
 
-            jTextField4.setEditable(false);
-            jTextField4.setText("Nome");
-            jTextField4.setPreferredSize(new java.awt.Dimension(500, 50));
-            jTextField4.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextField4ActionPerformed(evt);
-                }
-            });
+        barraMenu.add(menuArquivo);
 
-            jButton7.setText("Adicionar Usuário");
-            jButton7.setEnabled(false);
+        menuINEdit.setText("INEdit");
 
-            listaDeUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-            listaDeUsuarios.setToolTipText("");
-            listaDeUsuarios.setAutoscrolls(false);
-            jScrollPane6.setViewportView(listaDeUsuarios);
+        menuBotaoSobre.setText("Sobre");
+        menuBotaoSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBotaoSobreActionPerformed(evt);
+            }
+        });
+        menuINEdit.add(menuBotaoSobre);
 
-            BotaoSelecionarUsuario.setText("Selecionar Usuário");
-            BotaoSelecionarUsuario.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    BotaoSelecionarUsuarioActionPerformed(evt);
-                }
-            });
+        menuBotaoAjuda.setText("Ajuda");
+        menuBotaoAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBotaoAjudaActionPerformed(evt);
+            }
+        });
+        menuINEdit.add(menuBotaoAjuda);
 
-            textFieldSelecioneUsuario.setEditable(false);
-            textFieldSelecioneUsuario.setText("Selecione um Usuario:");
-            textFieldSelecioneUsuario.setBorder(null);
+        barraMenu.add(menuINEdit);
 
-            javax.swing.GroupLayout PainelEscolheUsuarioLayout = new javax.swing.GroupLayout(PainelEscolheUsuario);
-            PainelEscolheUsuario.setLayout(PainelEscolheUsuarioLayout);
-            PainelEscolheUsuarioLayout.setHorizontalGroup(
-                PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textFieldSelecioneUsuario)
-                        .addComponent(jScrollPane6)
-                        .addComponent(BotaoSelecionarUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
-                    .addContainerGap())
-            );
-            PainelEscolheUsuarioLayout.setVerticalGroup(
-                PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelEscolheUsuarioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(PainelEscolheUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(textFieldSelecioneUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(BotaoSelecionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
-            );
+        setJMenuBar(barraMenu);
 
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 454, Short.MAX_VALUE)
+        );
 
-            menuUsuario.setText("Usuário");
-
-            menuBotaoAlterarUsuario.setText("Alterar Usuário");
-            menuBotaoAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    menuBotaoAlterarUsuarioActionPerformed(evt);
-                }
-            });
-            menuUsuario.add(menuBotaoAlterarUsuario);
-
-            barraMenu.add(menuUsuario);
-
-            menuArquivo.setText("Arquivo");
-
-            menuBotaoAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-            menuBotaoAbrir.setText("Trocar");
-            menuBotaoAbrir.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    menuBotaoAbrirActionPerformed(evt);
-                }
-            });
-            menuArquivo.add(menuBotaoAbrir);
-
-            menuBotaoSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-            menuBotaoSalvar.setText("Salvar");
-            menuBotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    menuBotaoSalvarActionPerformed(evt);
-                }
-            });
-            menuArquivo.add(menuBotaoSalvar);
-
-            barraMenu.add(menuArquivo);
-
-            menuINEdit.setText("INEdit");
-
-            menuBotaoSobre.setText("Sobre");
-            menuBotaoSobre.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    menuBotaoSobreActionPerformed(evt);
-                }
-            });
-            menuINEdit.add(menuBotaoSobre);
-
-            menuBotaoAjuda.setText("Ajuda");
-            menuBotaoAjuda.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    menuBotaoAjudaActionPerformed(evt);
-                }
-            });
-            menuINEdit.add(menuBotaoAjuda);
-
-            barraMenu.add(menuINEdit);
-
-            setJMenuBar(barraMenu);
-
-            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-            getContentPane().setLayout(layout);
-            layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 500, Short.MAX_VALUE)
-            );
-            layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 454, Short.MAX_VALUE)
-            );
-
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     //! Botão para abertura de um arquivo
     private void menuBotaoAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBotaoAbrirActionPerformed
@@ -437,14 +315,6 @@ public class EditorDeTexto extends javax.swing.JFrame {
         telaAjuda.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         telaAjuda.setVisible(true);
     }//GEN-LAST:event_menuBotaoAjudaActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void textFieldNomeArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNomeArquivoActionPerformed
         // TODO add your handling code here:
@@ -597,29 +467,16 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JTextArea AreaDoTexto;
     private javax.swing.JButton BotaoSelecionarArquivo;
     private javax.swing.JButton BotaoSelecionarUsuario;
-    private javax.swing.JFrame JanelaEscolheArquivo;
-    private javax.swing.JFileChooser JanelaEscolheArquivoAntiga;
     private javax.swing.JFileChooser JanelaEscolhePasta;
-    private javax.swing.JFrame JanelaEscolheUsuario;
     private javax.swing.JPanel PainelEdicaoTexto;
     private javax.swing.JPanel PainelEscolheArquivo;
     private javax.swing.JPanel PainelEscolheUsuario;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botaoAdicionarArquivo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JList<String> listaDeArquivos;
     private javax.swing.JList<String> listaDeUsuarios;
