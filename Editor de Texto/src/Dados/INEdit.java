@@ -41,6 +41,8 @@ public class INEdit {
         Statement stmt = null;
         try {
             stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM DOCUMENTO");
+            stmt.executeUpdate("DELETE FROM FORMATACAO");
             stmt.executeUpdate("DELETE FROM USUARIO");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,6 +66,15 @@ public class INEdit {
     public Usuario retornaUsuario(String nome) {
         try {
             return mapeadorUsuario.get(nome);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public String[] retornaUsuarios() {
+        try {
+            return mapeadorUsuario.getUsuarios();
         } catch (SQLException e) {
             e.printStackTrace();
         }

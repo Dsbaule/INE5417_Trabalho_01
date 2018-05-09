@@ -36,6 +36,21 @@ public class TestesUsuario {
         assertEquals("User2", inedit.retornaUsuario("User2").getNome());
         assertEquals("User3", inedit.retornaUsuario("User3").getNome());
     }
+    
+    @Test
+    public void retornaUsuarios() {
+        Usuario user1 = new Usuario("User1");
+        inedit.cadastraUsuario(user1);
+        Usuario user2 = new Usuario("User2");
+        inedit.cadastraUsuario(user2);
+        Usuario user3 = new Usuario("User3");
+        inedit.cadastraUsuario(user3);
+        assertEquals("User1", inedit.retornaUsuario("User1").getNome());
+        assertEquals("User2", inedit.retornaUsuario("User2").getNome());
+        assertEquals("User3", inedit.retornaUsuario("User3").getNome());
+        String[] usuarios = inedit.retornaUsuarios();
+        assertNotNull(usuarios);
+    }
 
     @Test
     public void remove1UsuarioCadastrado() {

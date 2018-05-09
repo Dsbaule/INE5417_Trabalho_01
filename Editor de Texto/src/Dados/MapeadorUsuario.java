@@ -4,15 +4,17 @@
  * Disciplina:  INE5417 - Engenharia de Software
  * Projeto:     Edito de Texto
 -------------------------------------------------------------------------------- */
-
 //! Declaração do pacote
 package Dados;
 
 //! Importações necessárias
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 //! Classe para mapeamento SQL do Usuário
 public class MapeadorUsuario {
@@ -51,6 +53,49 @@ public class MapeadorUsuario {
         } finally {
             stmt.close();
         }
+    }
+
+    public String[] getUsuarios() throws SQLException {
+        List nomesUsuarios = new ArrayList<String>();
+
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME FROM USUARIO");
+        ResultSet rs = stmt.executeQuery();
+
+        try {
+            while (rs.next()) {
+                nomesUsuarios.add(rs.getString("NOME"));
+            }
+
+            if (nomesUsuarios.isEmpty()) {
+                return null;
+            } else {
+                return (String[]) nomesUsuarios.toArray(new String[nomesUsuarios.size()]);
+            }
+        } finally {
+            rs.close();
+            stmt.close();
+        }
+
+        /*
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM USUARIO");
+        ResultSet rs = stmt.executeQuery();
+        try {
+            if (rs.next()) {
+                Array a = rs.getArray(1);
+                String[] nomesUsuarios = (String[])a.getArray();
+                Usuario[] usuarios = new Usuario[nomesUsuarios.length];
+                for (int i = 0; i < usuarios.length; i++) {
+                    usuarios[i] = get(nomesUsuarios[i]);
+                }
+                return usuarios;
+            } else {
+                return null;
+            }
+        } finally {
+            rs.close();
+            stmt.close();
+        }
+         */
     }
 
     public Usuario get(String nomeUsuario) throws SQLException {
