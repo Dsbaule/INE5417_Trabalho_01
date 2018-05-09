@@ -56,7 +56,7 @@ public class MapeadorUsuario {
     }
 
     public String[] getUsuarios() throws SQLException {
-        List nomesUsuarios = new ArrayList<String>();
+        List<String> nomesUsuarios = new ArrayList<String>();
 
         PreparedStatement stmt = con.prepareStatement("SELECT NOME FROM USUARIO");
         ResultSet rs = stmt.executeQuery();

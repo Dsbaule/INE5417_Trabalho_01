@@ -90,7 +90,7 @@ public class MapeadorDocumento {
     }
     
     public String[] getDocumentos(Usuario usuario) throws SQLException {
-        List nomesDocumentos = new ArrayList<String>();
+        List<String> nomesDocumentos = new ArrayList<String>();
 
         PreparedStatement stmt = con.prepareStatement("SELECT NOME FROM DOCUMENTO WHERE USUARIO=?");
         stmt.setString(1, usuario.getNome());
