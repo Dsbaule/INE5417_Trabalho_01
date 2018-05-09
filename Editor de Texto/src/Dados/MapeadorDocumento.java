@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 //! Classe para mapeamento SQL do Usuário
 public class MapeadorDocumento {
@@ -80,6 +82,29 @@ public class MapeadorDocumento {
                 return documento;
             } else {
                 return null;
+            }
+        } finally {
+            rs.close();
+            stmt.close();
+        }
+    }
+    
+    public String[] getDocumentos(Usuario usuario) throws SQLException {
+        List nomesDocumentos = new ArrayList<String>();
+
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME FROM DOCUMENTO WHERE USUARIO=?");
+        stmt.setString(1, usuario.getNome());
+        ResultSet rs = stmt.executeQuery();
+
+        try {
+            while (rs.next()) {
+                nomesDocumentos.add(rs.getString("NOME"));
+            }
+
+            if (nomesDocumentos.isEmpty()) {
+                return null;
+            } else {
+                return (String[]) nomesDocumentos.toArray(new String[nomesDocumentos.size()]);
             }
         } finally {
             rs.close();
