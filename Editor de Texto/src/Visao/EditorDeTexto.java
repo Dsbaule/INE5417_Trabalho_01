@@ -69,12 +69,23 @@ public class EditorDeTexto extends javax.swing.JFrame {
         botaoSelecionarUsuario = new javax.swing.JButton();
         textFieldSelecioneUsuario = new javax.swing.JTextField();
         PainelEscolheFormatacao = new javax.swing.JPanel();
-        textFieldNomeFormatacao = new javax.swing.JTextField();
         botaoAdicionarFormatacao = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         listaDeFormatacoes = new javax.swing.JList<>();
         botaoSelecionarFormatacao = new javax.swing.JButton();
         textFieldSelecioneUsuario1 = new javax.swing.JTextField();
+        janelaFonte = new javax.swing.JFrame();
+        comboBoxFonte = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        textFieldTamanhoFormatacao = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        comboBoxCorFonte = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        comboBoxCorFundo = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        textFieldNomeFormatacao = new javax.swing.JTextField();
+        botaoCadastraFonte = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menuUsuario = new javax.swing.JMenu();
         menuBotaoAlterarUsuario = new javax.swing.JMenuItem();
@@ -228,17 +239,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
         PainelEscolheFormatacao.setMinimumSize(new java.awt.Dimension(500, 500));
 
-        textFieldNomeFormatacao.setEditable(false);
-        textFieldNomeFormatacao.setText("Nome");
-        textFieldNomeFormatacao.setPreferredSize(new java.awt.Dimension(500, 50));
-        textFieldNomeFormatacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNomeFormatacaoActionPerformed(evt);
-            }
-        });
-
         botaoAdicionarFormatacao.setText("Adicionar Formatação");
-        botaoAdicionarFormatacao.setEnabled(false);
         botaoAdicionarFormatacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAdicionarFormatacaoActionPerformed(evt);
@@ -274,21 +275,16 @@ public class EditorDeTexto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PainelEscolheFormatacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldSelecioneUsuario1)
-                    .addComponent(jScrollPane7)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addComponent(botaoSelecionarFormatacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PainelEscolheFormatacaoLayout.createSequentialGroup()
-                        .addComponent(textFieldNomeFormatacao, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoAdicionarFormatacao, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                    .addComponent(botaoAdicionarFormatacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PainelEscolheFormatacaoLayout.setVerticalGroup(
             PainelEscolheFormatacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelEscolheFormatacaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PainelEscolheFormatacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoAdicionarFormatacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldNomeFormatacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(botaoAdicionarFormatacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldSelecioneUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,6 +292,100 @@ public class EditorDeTexto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoSelecionarFormatacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        janelaFonte.setTitle("Cadastro de Fonte");
+        janelaFonte.setMaximumSize(new java.awt.Dimension(418, 230));
+        janelaFonte.setMinimumSize(new java.awt.Dimension(418, 230));
+        janelaFonte.setPreferredSize(new java.awt.Dimension(418, 230));
+        janelaFonte.setResizable(false);
+
+        comboBoxFonte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxFonte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxFonteActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Tamanho:");
+
+        textFieldTamanhoFormatacao.setText("12");
+
+        jLabel2.setText("Fonte:");
+
+        jLabel3.setText("Cor Fonte:");
+
+        comboBoxCorFonte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("Cor Fundo:");
+
+        comboBoxCorFundo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("Nome:");
+
+        botaoCadastraFonte.setText("OK");
+        botaoCadastraFonte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCadastraFonteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout janelaFonteLayout = new javax.swing.GroupLayout(janelaFonte.getContentPane());
+        janelaFonte.getContentPane().setLayout(janelaFonteLayout);
+        janelaFonteLayout.setHorizontalGroup(
+            janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(janelaFonteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoCadastraFonte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(janelaFonteLayout.createSequentialGroup()
+                        .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBoxFonte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldTamanhoFormatacao)))
+                    .addGroup(janelaFonteLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxCorFonte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, janelaFonteLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxCorFundo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(janelaFonteLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldNomeFormatacao, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        janelaFonteLayout.setVerticalGroup(
+            janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(janelaFonteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldNomeFormatacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxFonte, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldTamanhoFormatacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxCorFonte, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(janelaFonteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoCadastraFonte)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -441,7 +531,6 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
     private void botaoAdicionarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarArquivoActionPerformed
         String nomeDocumento = textFieldNomeArquivo.getText();
-
         documento = inedit.retornaDocumento(nomeDocumento);
 
         if (documento != null) {
@@ -460,10 +549,6 @@ public class EditorDeTexto extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_botaoAdicionarArquivoActionPerformed
-
-    private void textFieldNomeFormatacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNomeFormatacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldNomeFormatacaoActionPerformed
 
     private void botaoSelecionarFormatacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSelecionarFormatacaoActionPerformed
         formatacao = inedit.retornaFormatacao(listaDeFormatacoes.getSelectedValue());
@@ -487,8 +572,37 @@ public class EditorDeTexto extends javax.swing.JFrame {
     }//GEN-LAST:event_menuFormatacaoActionPerformed
 
     private void botaoAdicionarFormatacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarFormatacaoActionPerformed
-        // TODO add your handling code here:
+        initJanelaFonte();
+        janelaFonte.setVisible(true);
+        janelaFonte.setAlwaysOnTop(true);
     }//GEN-LAST:event_botaoAdicionarFormatacaoActionPerformed
+
+    private void comboBoxFonteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFonteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxFonteActionPerformed
+
+    private void botaoCadastraFonteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastraFonteActionPerformed
+        String nomeFormatacao = textFieldNomeFormatacao.getText();
+        formatacao = inedit.retornaFormatacao(nomeFormatacao);
+
+        if (formatacao != null) {
+            JOptionPane.showMessageDialog(this, "Fomatação já existente!", "Nome Inválido", JOptionPane.ERROR_MESSAGE);   // Mostrar um diálogo para confirmação do salvamento do arquivo
+        } else {
+            int fonte = comboBoxCorFonte.getSelectedIndex();
+            int tamanho =  Integer.parseInt(textFieldTamanhoFormatacao.getText());
+            int corFonte = comboBoxCorFonte.getSelectedIndex();
+            int corFundo = comboBoxCorFundo.getSelectedIndex();
+            System.out.println(String.format("%s %d %d %d %d", nomeFormatacao, tamanho, fonte, corFonte, corFundo));
+            formatacao = new Formatacao(nomeFormatacao, tamanho, fonte, corFonte, corFundo);
+            inedit.cadastraFormatacao(formatacao);
+        }
+        
+        janelaFonte.setVisible(false);
+        updateEditorDeTexto();
+        barraMenu.setVisible(true);
+        this.setContentPane(PainelEdicaoTexto);
+        this.pack();
+    }//GEN-LAST:event_botaoCadastraFonteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -580,6 +694,23 @@ public class EditorDeTexto extends javax.swing.JFrame {
         listaDeFormatacoes.setModel(model);
         listaDeFormatacoes.setSelectedIndex(0);
     }
+    
+    private void initJanelaFonte() {
+        String[] fontes = Formatacao.getFontes();
+        comboBoxFonte.removeAllItems();
+        for (String fonte : fontes)
+            comboBoxFonte.addItem(fonte);
+        
+        String[] cores = Formatacao.getCores();
+        comboBoxCorFonte.removeAllItems();
+        comboBoxCorFundo.removeAllItems();
+        for (String cor : cores) {
+            comboBoxCorFonte.addItem(cor);
+            comboBoxCorFundo.addItem(cor);
+        }
+        
+        janelaFonte.setVisible(true);
+    }
 
     private void initEditorDeTexto() {
         menuUsuario.setEnabled(true);
@@ -627,13 +758,23 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdicionarArquivo;
     private javax.swing.JButton botaoAdicionarFormatacao;
     private javax.swing.JButton botaoAdicionarUsuario;
+    private javax.swing.JButton botaoCadastraFonte;
     private javax.swing.JButton botaoSelecionarArquivo;
     private javax.swing.JButton botaoSelecionarFormatacao;
     private javax.swing.JButton botaoSelecionarUsuario;
+    private javax.swing.JComboBox<String> comboBoxCorFonte;
+    private javax.swing.JComboBox<String> comboBoxCorFundo;
+    private javax.swing.JComboBox<String> comboBoxFonte;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JFrame janelaFonte;
     private javax.swing.JList<String> listaDeArquivos;
     private javax.swing.JList<String> listaDeFormatacoes;
     private javax.swing.JList<String> listaDeUsuarios;
@@ -651,6 +792,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldNomeUsuario;
     private javax.swing.JTextField textFieldSelecioneUsuario;
     private javax.swing.JTextField textFieldSelecioneUsuario1;
+    private javax.swing.JTextField textFieldTamanhoFormatacao;
     // End of variables declaration//GEN-END:variables
 }
 
