@@ -89,22 +89,26 @@ public class MapeadorDocumento {
         }
     }
     
-    public String[] getDocumentos(Usuario usuario) throws SQLException {
-        List<String> nomesDocumentos = new ArrayList<String>();
+    public Documento[] getDocumentos(Usuario usuario) throws SQLException {
+        
+        List<Documento> documentos = new ArrayList<Documento>();
 
-        PreparedStatement stmt = con.prepareStatement("SELECT NOME FROM DOCUMENTO WHERE USUARIO=?");
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME, FILEPATH, FORMATACAO FROM DOCUMENTO WHERE USUARIO=?");
         stmt.setString(1, usuario.getNome());
-        ResultSet rs = stmt.executeQuery();
-
+        ResultSet rs = stmt.executeQuery();        
+        
         try {
             while (rs.next()) {
-                nomesDocumentos.add(rs.getString("NOME"));
+                String nome = rs.getString("NOME");
+                String filePath = rs.getString("FILEPATH");
+                String nomeFormatacao = rs.getString("FORMATACAO");
+                Formatacao formatacao = mapeadorFormatacao.get(nomeFormatacao);
+                documentos.add(new Documento(nome, filePath, usuario, formatacao));
             }
-
-            if (nomesDocumentos.isEmpty()) {
+            if (documentos.isEmpty()) {
                 return null;
             } else {
-                return (String[]) nomesDocumentos.toArray(new String[nomesDocumentos.size()]);
+                return (Documento[]) documentos.toArray(new Documento[documentos.size()]);
             }
         } finally {
             rs.close();

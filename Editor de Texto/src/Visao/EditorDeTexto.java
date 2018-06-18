@@ -135,12 +135,12 @@ public class EditorDeTexto extends javax.swing.JFrame {
             .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5)
                     .addComponent(botaoSelecionarArquivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
                         .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                        .addComponent(botaoAdicionarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5))
                 .addContainerGap())
         );
         PainelEscolheArquivoLayout.setVerticalGroup(
@@ -666,16 +666,17 @@ public class EditorDeTexto extends javax.swing.JFrame {
         menuArquivo.setEnabled(false);
         menuFormatacao.setEnabled(false);
         
-        String[] arquivos = inedit.retornaDocumentos(usuario);
-        DefaultListModel model = new DefaultListModel();
+        Documento[] arquivos = inedit.retornaDocumentos(usuario);
+        
+        DefaultListModel modelDocumentos = new DefaultListModel();
         
         if (arquivos != null) {
-            for (String arquivo : arquivos) {
-                model.addElement(arquivo);
+            for (Documento arquivo : arquivos) {
+                modelDocumentos.addElement(arquivo.getNomeDocumento().concat(" (").concat(arquivo.getFilePath()).concat(")"));
             }
         }
 
-        listaDeArquivos.setModel(model);
+        listaDeArquivos.setModel(modelDocumentos);
         listaDeArquivos.setSelectedIndex(0);
     }
     

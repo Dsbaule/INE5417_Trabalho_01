@@ -140,7 +140,7 @@ public class INEdit {
         return null;
     }
     
-    public String[] retornaDocumentos (Usuario usuario) {
+    public Documento[] retornaDocumentos (Usuario usuario) {
         try {
             return mapeadorDocumento.getDocumentos(usuario);
         } catch (SQLException e) {
