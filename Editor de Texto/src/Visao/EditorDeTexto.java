@@ -595,6 +595,8 @@ public class EditorDeTexto extends javax.swing.JFrame {
             System.out.println(String.format("%s %d %d %d %d", nomeFormatacao, tamanho, fonte, corFonte, corFundo));
             formatacao = new Formatacao(nomeFormatacao, tamanho, fonte, corFonte, corFundo);
             inedit.cadastraFormatacao(formatacao);
+            documento.setFormatacao(formatacao);
+            inedit.cadastraDocumento(documento);
         }
         
         janelaFonte.setVisible(false);
