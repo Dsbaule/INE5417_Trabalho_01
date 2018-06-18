@@ -732,6 +732,10 @@ public class EditorDeTexto extends javax.swing.JFrame {
     }
     
     private void updateEditorDeTexto() {
+        menuUsuario.setEnabled(true);
+        menuArquivo.setEnabled(true);
+        menuFormatacao.setEnabled(true);
+        
         AreaDoTexto.setFont(formatacao.getFormatedFont());
         AreaDoTexto.setBackground(formatacao.getBackgroundCollor());
         AreaDoTexto.setForeground(formatacao.getFontCollor());

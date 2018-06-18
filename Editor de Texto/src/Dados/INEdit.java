@@ -105,6 +105,15 @@ public class INEdit {
         }
         return null;
     }
+    
+    public Formatacao[] retornaFormatacoes() {
+        try {
+            return mapeadorFormatacao.getFormatacoes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void removeFormatacao(String nomeFormatacao) {
         try {

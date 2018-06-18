@@ -4,7 +4,6 @@
  * Disciplina:  INE5417 - Engenharia de Software
  * Projeto:     Edito de Texto
 -------------------------------------------------------------------------------- */
-
 //! Declaração do pacote
 package Dados;
 
@@ -13,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 //! Classe para mapeamento SQL do Usuário
 public class MapeadorFormatacao {
@@ -47,8 +48,8 @@ public class MapeadorFormatacao {
     }
 
     private void atualizaFormatacaoExistente(Formatacao formatacao) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("UPDATE FORMATACAO SET TAMANHO=?,FONTE=?, "+
-			"CORFONTE=?,CORFUNDO=? WHERE NOME=?");
+        PreparedStatement stmt = con.prepareStatement("UPDATE FORMATACAO SET TAMANHO=?,FONTE=?, "
+                + "CORFONTE=?,CORFUNDO=? WHERE NOME=?");
         try {
             stmt.setInt(1, formatacao.getTamanho());
             stmt.setInt(2, formatacao.getFonte());
@@ -77,6 +78,32 @@ public class MapeadorFormatacao {
                 return formatacao;
             } else {
                 return null;
+            }
+        } finally {
+            rs.close();
+            stmt.close();
+        }
+    }
+
+    public Formatacao[] getFormatacoes() throws SQLException {
+        List<Formatacao> formatacoes = new ArrayList<Formatacao>();
+
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME, TAMANHO, FONTE, CORFONTE, CORFUNDO FROM FORMATACAO");
+        ResultSet rs = stmt.executeQuery();        
+
+        try {
+            while (rs.next()) {
+                String nome = rs.getString("NOME");
+                int tamanho = rs.getInt("TAMANHO");
+                int fonte = rs.getInt("FONTE");
+                int corFonte = rs.getInt("CORFONTE");
+                int corFundo = rs.getInt("CORFUNDO");
+                formatacoes.add(new Formatacao(nome, tamanho, fonte, corFonte, corFundo));
+            }
+            if (formatacoes.isEmpty()) {
+                return null;
+            } else {
+                return (Formatacao[]) formatacoes.toArray(new Formatacao[formatacoes.size()]);
             }
         } finally {
             rs.close();

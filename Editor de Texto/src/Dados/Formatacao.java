@@ -24,7 +24,7 @@ public class Formatacao {
     private int     corFonte;
     private int     corFundo;
     
-    private String[] fontes = {"Arial", "Times New Roman", "Comic Sans"};
+    private static String[] fontes = {"Arial", "Times New Roman", "Comic Sans MS"};
     private Color[] cores   = {Color.BLACK, Color.WHITE, Color.RED, Color.BLUE, Color.GREEN};
     
     //! Construtor para formatação padrão (Arial, 12, Preta em fundo branco)
@@ -48,6 +48,30 @@ public class Formatacao {
     //! Retorna o nome da formatação
     public String getNomeFormatacao() {
         return nomeFormatacao;
+    }
+    
+    //! Retorna uma fonte java de acordo com os atributos
+    public Font getFormatedFont() {
+        return new Font(fontes[this.fonte], Font.PLAIN, this.tamanho);
+    }
+    
+    public static String[] getFontes() {
+        return fontes;
+    }
+    
+    public static  String[] getCores() {
+        String[] cores = {"Preto", "Branco", "Vermelho", "Azul", "Verde"};
+        return cores;
+    }
+    
+    //! Retorna uma cor java de acordo com os atributos
+    public Color getFontCollor() {
+        return cores[this.corFonte];
+    }
+    
+    //! Retorna uma cor java de acordo com os atributos
+    public Color getBackgroundCollor() {
+        return cores[this.corFundo];
     }
     
     //! Retorna a fonte
