@@ -140,6 +140,15 @@ public class INEdit {
         return null;
     }
     
+    public Documento retornaDocumento(String nomeDocumento, Usuario usuario) {
+        try {
+            return mapeadorDocumento.get(nomeDocumento, usuario);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public Documento[] retornaDocumentos (Usuario usuario) {
         try {
             return mapeadorDocumento.getDocumentos(usuario);

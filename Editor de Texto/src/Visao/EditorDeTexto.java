@@ -531,14 +531,17 @@ public class EditorDeTexto extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSelecionarUsuarioActionPerformed
 
     private void botaoSelecionarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSelecionarArquivoActionPerformed
-        documento = inedit.retornaDocumento(listaDeArquivos.getSelectedValue());
-        formatacao = inedit.retornaFormatacao(documento.getFormatacao().getNomeFormatacao());
+        if (listaDeArquivos.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(this, "Nenhum Arquivo selecionado!", "Arquivo Invalido", JOptionPane.ERROR_MESSAGE);   // Mostrar um diálogo para confirmação do salvamento do arquivo
+        } else {
+            documento = inedit.retornaDocumento(listaDeArquivos.getSelectedValue());
+            formatacao = inedit.retornaFormatacao(documento.getFormatacao().getNomeFormatacao());
 
-        initEditorDeTexto();
-        updateEditorDeTexto();
-        barraMenu.setVisible(true);
-        this.setContentPane(PainelEdicaoTexto);
-        this.pack();
+            initEditorDeTexto();
+            barraMenu.setVisible(true);
+            this.setContentPane(PainelEdicaoTexto);
+            this.pack();
+        }
     }//GEN-LAST:event_botaoSelecionarArquivoActionPerformed
 
     private void menuBotaoAlterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBotaoAlterarUsuarioActionPerformed
@@ -573,7 +576,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         documento.setFormatacao(formatacao);
         inedit.cadastraDocumento(documento);
         
-        updateEditorDeTexto();
+        updateFormatacao();
         barraMenu.setVisible(true);
         this.setContentPane(PainelEdicaoTexto);
         this.pack();
@@ -618,7 +621,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         }
         
         janelaFonte.setVisible(false);
-        updateEditorDeTexto();
+        updateFormatacao();
         barraMenu.setVisible(true);
         this.setContentPane(PainelEdicaoTexto);
         this.pack();
@@ -638,7 +641,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
                 System.out.println("Aprovado!");
                 documento = new Documento(nome, path, usuario);
                 formatacao = null;
-                initEditorDeTexto();
+                updateTexto();
                 initPainelEscolheFormatacao();
                 this.setContentPane(PainelEscolheFormatacao);
                 this.pack();
@@ -684,7 +687,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void initPainelEscolheUsuario() {
         menuUsuario.setEnabled(false);
         menuArquivo.setEnabled(false);
@@ -759,6 +762,11 @@ public class EditorDeTexto extends javax.swing.JFrame {
     }
 
     private void initEditorDeTexto() {
+        updateTexto();
+        updateFormatacao();
+    }
+    
+    private void updateTexto() {
         menuUsuario.setEnabled(true);
         menuArquivo.setEnabled(true);
         menuFormatacao.setEnabled(true);
@@ -769,10 +777,9 @@ public class EditorDeTexto extends javax.swing.JFrame {
         
         documento.leDocumento();
         AreaDoTexto.setText(documento.getTexto());
-        
     }
     
-    private void updateEditorDeTexto() {
+    private void updateFormatacao() {
         menuUsuario.setEnabled(true);
         menuArquivo.setEnabled(true);
         menuFormatacao.setEnabled(true);
