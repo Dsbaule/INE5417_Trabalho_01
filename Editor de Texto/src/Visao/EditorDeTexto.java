@@ -12,8 +12,10 @@ import Dados.INEdit;
 import Dados.Usuario;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.io.File;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -40,6 +42,44 @@ public class EditorDeTexto extends javax.swing.JFrame {
         initPainelEscolheUsuario();
         this.setContentPane(PainelEscolheUsuario);
         this.pack();
+        
+        
+        ImageIcon userIcon = new ImageIcon((getClass().getResource("Icones/USER.png")));
+        Image image = userIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        userIcon = new ImageIcon(image);  // transform it back
+        menuBotaoAlterarUsuario.setIcon(userIcon);
+        
+        ImageIcon saveIcon = new ImageIcon((getClass().getResource("Icones/SAVE.png")));
+        image = saveIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        saveIcon = new ImageIcon(image);  // transform it back
+        menuBotaoSalvar.setIcon(saveIcon);
+        menuBotaoSalvarComo.setIcon(saveIcon);
+        
+        ImageIcon openIcon = new ImageIcon((getClass().getResource("Icones/OPEN.png")));
+        image = openIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        openIcon = new ImageIcon(image);  // transform it back
+        menuBotaoAbrir.setIcon(openIcon);
+        
+        ImageIcon fontIcon = new ImageIcon((getClass().getResource("Icones/FONT.png")));
+        image = fontIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        fontIcon = new ImageIcon(image);  // transform it back
+        menuFormatacao.setIcon(fontIcon);
+        
+        ImageIcon helpIcon = new ImageIcon((getClass().getResource("Icones/AJUDA.png")));
+        image = helpIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        helpIcon = new ImageIcon(image);  // transform it back
+        menuBotaoAjuda.setIcon(helpIcon);
+        
+        ImageIcon aboutIcon = new ImageIcon((getClass().getResource("Icones/SOBRE.png")));
+        image = aboutIcon.getImage(); // transform it
+        image = image.getScaledInstance(15, 15, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way 
+        aboutIcon = new ImageIcon(image);  // transform it back
+        menuBotaoSobre.setIcon(aboutIcon);
     }
 
     /**
@@ -461,6 +501,8 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
             menuBotaoSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
             menuBotaoSalvar.setText("Salvar");
+            menuBotaoSalvar.setMargin(new java.awt.Insets(677, 21, 21, 21));
+            menuBotaoSalvar.setMaximumSize(new java.awt.Dimension(677, 21));
             menuBotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     menuBotaoSalvarActionPerformed(evt);
@@ -514,7 +556,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
 
             pack();
         }// </editor-fold>//GEN-END:initComponents
-
+    
     //! Botão para abertura de um arquivo
     private void menuBotaoAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBotaoAbrirActionPerformed
         initPainelEscolheArquivo();
