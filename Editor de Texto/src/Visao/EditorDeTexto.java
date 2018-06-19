@@ -672,7 +672,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         
         if (arquivos != null) {
             for (Documento arquivo : arquivos) {
-                modelDocumentos.addElement(arquivo.getNomeDocumento().concat(" (").concat(arquivo.getFilePath()).concat(")"));
+                modelDocumentos.addElement(arquivo.getNomeDocumento());//.concat(" (").concat(arquivo.getFilePath()).concat(")"));
             }
         }
 

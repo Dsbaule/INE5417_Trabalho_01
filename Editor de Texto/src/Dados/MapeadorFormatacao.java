@@ -19,8 +19,16 @@ import java.util.List;
 public class MapeadorFormatacao {
 
     private Connection con;
+    
+    private static MapeadorFormatacao mapeadorFormatacao;
+    
+    public static MapeadorFormatacao getMapeadorFormatacao(Connection con){
+        if (mapeadorFormatacao == null)
+            mapeadorFormatacao = new MapeadorFormatacao(con);
+        return mapeadorFormatacao;
+    }
 
-    public MapeadorFormatacao(Connection con) {
+    private MapeadorFormatacao(Connection con) {
         this.con = con;
     }
 

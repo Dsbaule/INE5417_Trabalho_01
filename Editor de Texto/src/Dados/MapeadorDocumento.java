@@ -22,11 +22,19 @@ public class MapeadorDocumento {
     private Connection con;
     private MapeadorUsuario mapeadorUsuario;
     private MapeadorFormatacao mapeadorFormatacao;
+    
+    private static MapeadorDocumento mapeadorDocumento;
+    
+    public static MapeadorDocumento getMapeadorDocumento(Connection con){
+        if (mapeadorDocumento == null)
+            mapeadorDocumento = new MapeadorDocumento(con);
+        return mapeadorDocumento;
+    }
 
-    public MapeadorDocumento(Connection con) {
+    private MapeadorDocumento(Connection con) {
         this.con = con;
-        mapeadorUsuario = new MapeadorUsuario(con);
-        mapeadorFormatacao = new MapeadorFormatacao(con);
+        mapeadorUsuario = MapeadorUsuario.getMapeadorUsuario(con);
+        mapeadorFormatacao = MapeadorFormatacao.getMapeadorFormatacao(con);
     }
     
     public void put (Documento documento) throws SQLException {

@@ -28,9 +28,9 @@ public class INEdit {
             // BD Postgres
             Class.forName("org.postgresql.Driver");
             this.con = DriverManager.getConnection("jdbc:postgresql://localhost/INEdit", "postgres", "postgres");
-            this.mapeadorUsuario    = new MapeadorUsuario(con);
-            this.mapeadorFormatacao = new MapeadorFormatacao(con);
-            this.mapeadorDocumento  = new MapeadorDocumento(con);
+            this.mapeadorUsuario    = MapeadorUsuario.getMapeadorUsuario(con);
+            this.mapeadorFormatacao = MapeadorFormatacao.getMapeadorFormatacao(con);
+            this.mapeadorDocumento  = MapeadorDocumento.getMapeadorDocumento(con);
         } catch (Exception e) {
             e.printStackTrace();
             throw new java.lang.RuntimeException("Erro ao conectar!");

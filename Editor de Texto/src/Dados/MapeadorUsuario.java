@@ -21,7 +21,15 @@ public class MapeadorUsuario {
 
     private Connection con;
 
-    public MapeadorUsuario(Connection con) {
+    private static MapeadorUsuario mapeadorUsuario;
+    
+    public static MapeadorUsuario getMapeadorUsuario(Connection con){
+        if (mapeadorUsuario == null)
+            mapeadorUsuario = new MapeadorUsuario(con);
+        return mapeadorUsuario;
+    }
+
+    private MapeadorUsuario(Connection con) {
         this.con = con;
     }
 
