@@ -97,6 +97,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         menuBotaoAbrir = new javax.swing.JMenuItem();
         menuFormatacao = new javax.swing.JMenuItem();
         menuBotaoSalvar = new javax.swing.JMenuItem();
+        menuBotaoSalvarComo = new javax.swing.JMenuItem();
         menuINEdit = new javax.swing.JMenu();
         menuBotaoSobre = new javax.swing.JMenuItem();
         menuBotaoAjuda = new javax.swing.JMenuItem();
@@ -467,6 +468,15 @@ public class EditorDeTexto extends javax.swing.JFrame {
             });
             menuArquivo.add(menuBotaoSalvar);
 
+            menuBotaoSalvarComo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+            menuBotaoSalvarComo.setText("Salvar como");
+            menuBotaoSalvarComo.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    menuBotaoSalvarComoActionPerformed(evt);
+                }
+            });
+            menuArquivo.add(menuBotaoSalvarComo);
+
             barraMenu.add(menuArquivo);
 
             menuINEdit.setText("INEdit");
@@ -679,6 +689,19 @@ public class EditorDeTexto extends javax.swing.JFrame {
         listaDeArquivos.setSelectedIndex(listaDePaths.getSelectedIndex());
     }//GEN-LAST:event_listaDePathsValueChanged
 
+    private void menuBotaoSalvarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBotaoSalvarComoActionPerformed
+        int returnVal = JanelaEscolhePasta.showOpenDialog(this);    // Obtem a pasta para criação do novo arquivo através de um dialogo do sistema
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            String newFilePath = JanelaEscolhePasta.getSelectedFile().getPath().concat("\\").concat(documento.getNomeDocumento()).concat(".txt");
+            documento.setFilePath(newFilePath);
+            documento.setTexto(AreaDoTexto.getText());   // Alteração do texto do documento
+            documento.salvaDocumento(); // Salvar o documento
+            JOptionPane.showMessageDialog(this, "Arquivo Salvo");   // Mostrar um diálogo para confirmação do salvamento do arquivo
+        } else {
+            System.out.println("Acesso cancelado pelo usuário!");
+        }
+    }//GEN-LAST:event_menuBotaoSalvarComoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -872,6 +895,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuBotaoAjuda;
     private javax.swing.JMenuItem menuBotaoAlterarUsuario;
     private javax.swing.JMenuItem menuBotaoSalvar;
+    private javax.swing.JMenuItem menuBotaoSalvarComo;
     private javax.swing.JMenuItem menuBotaoSobre;
     private javax.swing.JMenuItem menuFormatacao;
     private javax.swing.JMenu menuINEdit;
