@@ -83,27 +83,6 @@ public class MapeadorUsuario {
             rs.close();
             stmt.close();
         }
-
-        /*
-        PreparedStatement stmt = con.prepareStatement("SELECT * FROM USUARIO");
-        ResultSet rs = stmt.executeQuery();
-        try {
-            if (rs.next()) {
-                Array a = rs.getArray(1);
-                String[] nomesUsuarios = (String[])a.getArray();
-                Usuario[] usuarios = new Usuario[nomesUsuarios.length];
-                for (int i = 0; i < usuarios.length; i++) {
-                    usuarios[i] = get(nomesUsuarios[i]);
-                }
-                return usuarios;
-            } else {
-                return null;
-            }
-        } finally {
-            rs.close();
-            stmt.close();
-        }
-         */
     }
 
     public Usuario get(String nomeUsuario) throws SQLException {
