@@ -59,6 +59,8 @@ public class EditorDeTexto extends javax.swing.JFrame {
         listaDeArquivos = new javax.swing.JList<>();
         botaoSelecionarArquivo = new javax.swing.JButton();
         botaoImportarArquivo = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        listaDePaths = new javax.swing.JList<>();
         PainelEdicaoTexto = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaDoTexto = new javax.swing.JTextArea();
@@ -121,6 +123,11 @@ public class EditorDeTexto extends javax.swing.JFrame {
         });
 
         listaDeArquivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaDeArquivos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaDeArquivosValueChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(listaDeArquivos);
 
         botaoSelecionarArquivo.setText("Selecionar Arquivo");
@@ -137,6 +144,14 @@ public class EditorDeTexto extends javax.swing.JFrame {
             }
         });
 
+        listaDePaths.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaDePaths.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaDePathsValueChanged(evt);
+            }
+        });
+        jScrollPane8.setViewportView(listaDePaths);
+
         javax.swing.GroupLayout PainelEscolheArquivoLayout = new javax.swing.GroupLayout(PainelEscolheArquivo);
         PainelEscolheArquivo.setLayout(PainelEscolheArquivoLayout);
         PainelEscolheArquivoLayout.setHorizontalGroup(
@@ -146,12 +161,16 @@ public class EditorDeTexto extends javax.swing.JFrame {
                 .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoSelecionarArquivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
-                        .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoAdicionarArquivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoImportarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5))
+                        .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelEscolheArquivoLayout.createSequentialGroup()
+                                .addComponent(botaoAdicionarArquivo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botaoImportarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         PainelEscolheArquivoLayout.setVerticalGroup(
@@ -163,7 +182,9 @@ public class EditorDeTexto extends javax.swing.JFrame {
                     .addComponent(textFieldNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botaoImportarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addGroup(PainelEscolheArquivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoSelecionarArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -307,9 +328,7 @@ public class EditorDeTexto extends javax.swing.JFrame {
         );
 
         janelaFonte.setTitle("Cadastro de Fonte");
-        janelaFonte.setMaximumSize(new java.awt.Dimension(418, 230));
         janelaFonte.setMinimumSize(new java.awt.Dimension(418, 230));
-        janelaFonte.setPreferredSize(new java.awt.Dimension(418, 230));
         janelaFonte.setResizable(false);
 
         comboBoxFonte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -652,6 +671,14 @@ public class EditorDeTexto extends javax.swing.JFrame {
             System.out.println("Acesso cancelado pelo usuário!");
         }    }//GEN-LAST:event_botaoImportarArquivoActionPerformed
 
+    private void listaDeArquivosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDeArquivosValueChanged
+        listaDePaths.setSelectedIndex(listaDeArquivos.getSelectedIndex());
+    }//GEN-LAST:event_listaDeArquivosValueChanged
+
+    private void listaDePathsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDePathsValueChanged
+        listaDeArquivos.setSelectedIndex(listaDePaths.getSelectedIndex());
+    }//GEN-LAST:event_listaDePathsValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -715,15 +742,19 @@ public class EditorDeTexto extends javax.swing.JFrame {
         Documento[] arquivos = inedit.retornaDocumentos(usuario);
         
         DefaultListModel modelDocumentos = new DefaultListModel();
+        DefaultListModel modelPaths = new DefaultListModel();
         
         if (arquivos != null) {
             for (Documento arquivo : arquivos) {
                 modelDocumentos.addElement(arquivo.getNomeDocumento());//.concat(" (").concat(arquivo.getFilePath()).concat(")"));
+                modelPaths.addElement(arquivo.getFilePath());
             }
         }
 
         listaDeArquivos.setModel(modelDocumentos);
+        listaDePaths.setModel(modelPaths);
         listaDeArquivos.setSelectedIndex(0);
+        listaDePaths.setSelectedIndex(0);
     }
     
     private void initPainelEscolheFormatacao() {
@@ -830,9 +861,11 @@ public class EditorDeTexto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JFrame janelaFonte;
     private javax.swing.JList<String> listaDeArquivos;
     private javax.swing.JList<String> listaDeFormatacoes;
+    private javax.swing.JList<String> listaDePaths;
     private javax.swing.JList<String> listaDeUsuarios;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenuItem menuBotaoAbrir;
